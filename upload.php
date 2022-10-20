@@ -11,8 +11,8 @@
     
 <?php
 
-if(array_key_exists('upfile', $_FILES)){
-  if(array_key_exists('error', $_FILES['upfile']));
+if(array_key_exists('fileToUpload', $_FILES)){
+  if(array_key_exists('error', $_FILES['fileToUpload']));
 $target_dir = "upload/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
