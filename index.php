@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -40,6 +44,17 @@
 </head>
 <body>
 
+
+                <?php
+                if(isset($_SESSION['id'])){
+                    echo "Üdv ". $_SESSION['nev'];
+                    echo '<a href= "belepes.php?kilepes=1"> Kilépés</a>';
+                }else{
+                    echo '<a href= "belepes.php"> Belépés</a>';
+                }
+                ?>
+
+
             <form method ="post" action = "lista.php">
             <input type="text" name="keresettNev">
             <input type = "submit" value="KERES">
@@ -67,10 +82,21 @@
                                 $bg = "background-color: yellow";
                             }
                         }
-                        if($row['sorId'] == $magam['sorId'] and $mezonev == $magam['mezoNeve']){
-                            echo "<td style=\"color: green;$bg\">".$nev."</td>\n";
+                        //if($row['sorId'] == $magam['sorId'] and $mezonev == $magam['mezoNeve']){
+                        if(isset($_SESSION['id'])){
+                            if($_SESSION['id'] == $row[$mezonev]){
+                                echo "<td style=\"color: green;$bg\">".$nev;
+                            }else{
+                                echo "<td style=\"$bg\">".$nev;
+                            }
                         }else {
-                            echo "<td style=\"$bg\">".$nev."</td>\n";
+                            echo "<td style=\"$bg\">".$nev;
+
+                            $img= "upload/".$row[$mezonev].".jpg";
+                                if(file_exists($img)){
+                                echo "<br><img src = \"$img\">";
+                            }
+                            echo "</td>\n";
                         }
                     }
                 }
