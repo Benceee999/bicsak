@@ -1,0 +1,23 @@
+table,tr,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-weight: bold;
+    width: 20%;
+}
+body{
+    margin-left: 40%;
+    background-color: grey;
+}
+img{
+    width:50px;
+    display: inline;
+}
+.inline{
+    display:inline-block    ;
+}
+form{
+    padding: 10px;
+}
+.bg{
+    background-color: lime;
+}
